@@ -11,22 +11,19 @@
    			<Menu text="Contacts">
                <items>
                   <MenuItem mnemonicParsing="false" text="Add Contact" onAction="#showNewItemDialog"/>
-                  <MenuItem mnemonicParsing="false" text="Edit Contact" />
-                  <MenuItem mnemonicParsing="false" text="Delete Contact" />
+                  <MenuItem mnemonicParsing="false" text="Edit Contact" onAction="#handleEditContact" />
+                  <MenuItem mnemonicParsing="false" text="Delete Contact" onAction="#handleDeleteContact" />
                </items>
             </Menu>
    </menus>
 		</MenuBar>
 	</top>
 	<center>   
- 		<VBox>
+ 		<VBox fx:id="tableVbox">
     <children>
-         		<TableView>
+         		<TableView fx:id="tableView">
            		<columns>
-             			<TableColumn prefWidth="225.0" text="First Name" />
-             			<TableColumn prefWidth="225.0" text="Last Name" />
-             			<TableColumn prefWidth="225.0" text="Phone Number" />
-             			<TableColumn prefWidth="225.0" text="Notes" />
+             			
    	    	    </columns>
        	  	</TableView>
     </children>

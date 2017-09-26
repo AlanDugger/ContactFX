@@ -8,7 +8,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alandugger.ContactDialogController">
    <bottom>
-      <TextArea prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="txtNotesArea" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <Label text="Notes" underline="true" BorderPane.alignment="CENTER" />
@@ -23,18 +23,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" />
-        </rowConstraints>
-         <children>
-            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <TextField alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
+        </rowConstraints>         
+            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>               
+            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>               
+            <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+               
+			<TextField fx:id="txtFirstName" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+			<TextField fx:id="txtLastName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="2"/>                                       
+         
       </GridPane>
    </top>
 </BorderPane>

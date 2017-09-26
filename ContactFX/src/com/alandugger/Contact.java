@@ -4,50 +4,69 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Contact {
 	
-	private SimpleStringProperty firstName;
-	private SimpleStringProperty lastName;
-	private SimpleStringProperty phoneNumber;
-	private SimpleStringProperty notes;
+	private SimpleStringProperty firstName = new SimpleStringProperty("");
+	private SimpleStringProperty lastName = new SimpleStringProperty("");
+	private SimpleStringProperty phoneNumber = new SimpleStringProperty("");
+	private SimpleStringProperty notes = new SimpleStringProperty("");
 	
 	public Contact() {
-		this.firstName = new SimpleStringProperty();
-		this.lastName = new SimpleStringProperty();
-		this.phoneNumber = new SimpleStringProperty();
-		this.notes = new SimpleStringProperty();
+		new Contact("", "", "", "");
+	}
+	
+	public Contact(String firstName, String lastName, String phoneNumber, String notes) {
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber(phoneNumber);
+		setNotes(notes);
 	}
 		
 	public void setFirstName(String name) {
-		this.firstName.set(name);
+		firstName.set(name);
 	}
 	
 	public void setLastName(String name) {
-		this.firstName.set(name);
+		lastName.set(name);
 	}
 	
 	public void setPhoneNumber(String number) {
-		this.firstName.set(number);
+		phoneNumber.set(number);
 	}
 	
-	public void setNotes(String notes) {
-		this.firstName.set(notes);
+	public void setNotes(String newNotes) {
+		notes.set(newNotes);
 	}
 
-	public String getFirstName() {
+	public SimpleStringProperty getFirstNameSSP() {
+		return firstName;
+	}
+
+	public SimpleStringProperty getLastNameSSP() {
+		return lastName;
+	}
+
+	public SimpleStringProperty getPhoneNumberSSP() {
+		return phoneNumber;
+	}
+
+	public SimpleStringProperty getNotesSSP() {
+		return notes;
+	}
+
+	public String  getFirstName() {
 		return firstName.getValue();
 	}
 
-	public String getLastName() {
+	public String  getLastName() {
 		return lastName.getValue();
 	}
 
-	public String getPhoneNumber() {
+	public String  getPhoneNumber() {
 		return phoneNumber.getValue();
 	}
 
-	public String getNotes() {
+	public String  getNotes() {
 		return notes.getValue();
 	}
-	
 	
 
 }

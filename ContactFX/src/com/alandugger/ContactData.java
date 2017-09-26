@@ -17,40 +17,56 @@ import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /* Credits to Tim Buchalka for assistance with ContactData  class*/
 
 public class ContactData {
 
-	  private static final String CONTACTS_FILE = "contacts.xml";
+	private static ContactData instance = new ContactData();
+	private static final String CONTACTS_FILE = "contacts.xml";	
+	private static final String CONTACT = "contact";
+	private static final String FIRST_NAME = "first_name";
+	private static final String LAST_NAME = "last_name";
+	private static final String PHONE_NUMBER = "phone_number";
+	private static final String NOTES = "notes";
 
-	    private static final String CONTACT = "contact";
-	    private static final String FIRST_NAME = "first_name";
-	    private static final String LAST_NAME = "last_name";
-	    private static final String PHONE_NUMBER = "phone_number";
-	    private static final String NOTES = "notes";
+	private ObservableList<Contact> contacts;
 
-	    private ObservableList<Contact> contacts;
-
-	    public ContactData() {
-	        // *** initialize the contacts list here ***
-	    }
+	private ContactData() {	
+		contacts = FXCollections.observableArrayList();
+	}
+	
+	public static ContactData getInstance() {
+		return instance;
+	}
+	
+	public ObservableList<Contact> getContacts(){
+		return contacts;
+	}
+	public void addContact(Contact newContact) {
+		contacts.add(newContact);
+	}
+	
+	public void removeContact(Contact oldContact) {
+		contacts.remove(oldContact);
+	}
 
 	    // *** Add methods to add/delete/access contacts here ***
 
-	    public void loadContacts() {
-	        try {
-	            // First, create a new XMLInputFactory
-	            XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-	            // Setup a new eventReader
-	            InputStream in = new FileInputStream(CONTACTS_FILE);
-	            XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
-	            // read the XML document
-	            Contact contact = null;
+	public void loadContacts() {
+		try {
+			// First, create a new XMLInputFactory
+			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+			// Setup a new eventReader
+			InputStream in = new FileInputStream(CONTACTS_FILE);
+			XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
+			// read the XML document
+			Contact contact = null;
 
-	            while (eventReader.hasNext()) {
-	                XMLEvent event = eventReader.nextEvent();
+			while (eventReader.hasNext()) {
+				XMLEvent event = eventReader.nextEvent();
 
 	                if (event.isStartElement()) {
 	                    StartElement startElement = event.asStartElement();
